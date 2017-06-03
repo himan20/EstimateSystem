@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +49,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrandMaster.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaptionMaster.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientMaster.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateEdition.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateHeader.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimatePublication.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateScheduled.cs">
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateSystemEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstimateSystemEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateSystemEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstimateSystemEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstimateSystemEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstimateSystemEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EstimateSystemEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EstimateSystemEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="EstimateSystemEntities.edmx.diagram">
+      <DependentUpon>EstimateSystemEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EstimateSystemEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EstimateSystemEntities.Context.cs</LastGenOutput>
+      <DependentUpon>EstimateSystemEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="EstimateSystemEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EstimateSystemEntities.edmx</DependentUpon>
+      <LastGenOutput>EstimateSystemEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

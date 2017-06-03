@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="feb22a238a5346ff896cbef250df4b2d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="EstimateDBModel.CaptionMaster" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstimateDBModel.ClientMaster" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstimateDBModel.EstimatePublication" Width="1.5" PointX="0.875" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EstimateDBModel.BrandMaster" Width="1.5" PointX="3" PointY="7.125" />
+        <AssociationConnector Association="EstimateDBModel.FK_BrandMaster_ClientMaster" />
+        <AssociationConnector Association="EstimateDBModel.FK_CaptionMaster_BrandMaster" />
+        <EntityTypeShape EntityType="EstimateDBModel.EstimateEdition" Width="1.5" PointX="6.625" PointY="2" />
+        <EntityTypeShape EntityType="EstimateDBModel.EstimateHeader" Width="1.5" PointX="9.25" PointY="2.125" />
+        <EntityTypeShape EntityType="EstimateDBModel.EstimateScheduled" Width="1.5" PointX="3.875" PointY="1.875" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateHeader_BrandMaster" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateScheduled_CaptionMaster" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateHeader_ClientMaster" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateEdition_EstimateHeader" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateEdition_EstimatePublication" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateScheduled_EstimateEdition" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimatePublication_EstimateHeader" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateScheduled_EstimateHeader" />
+        <AssociationConnector Association="EstimateDBModel.FK_EstimateScheduled_EstimatePublication" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

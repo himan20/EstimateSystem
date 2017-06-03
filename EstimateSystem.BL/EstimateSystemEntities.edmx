@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EstimateDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BrandMaster">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand_Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaptionMaster">
+          <Key>
+            <PropertyRef Name="CaptionID" />
+          </Key>
+          <Property Name="CaptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Caption" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientMaster">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstimateEdition">
+          <Key>
+            <PropertyRef Name="EST_EditionID" />
+          </Key>
+          <Property Name="EST_EditionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_PUBID" Type="int" Nullable="false" />
+          <Property Name="EST_ID" Type="int" Nullable="false" />
+          <Property Name="Edition" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Height" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Weidth" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Size" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NoOfInsertion" Type="int" Nullable="false" />
+          <Property Name="Total_Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Agency_Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_NetCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstimateHeader">
+          <Key>
+            <PropertyRef Name="EST_ID" />
+          </Key>
+          <Property Name="EST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_NO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EST_Date" Type="datetime" Nullable="false" />
+          <Property Name="Campaign" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Agency" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PO_NO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PO_Date" Type="datetime" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="PeriodFrom" Type="datetime" Nullable="false" />
+          <Property Name="PeriodTo" Type="datetime" Nullable="false" />
+          <Property Name="SAC_PER" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AAC_PER" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Gross_Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Net_Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstimatePublication">
+          <Key>
+            <PropertyRef Name="EST_PUBID" />
+          </Key>
+          <Property Name="EST_PUBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_Publication" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EST_ID" Type="int" Nullable="false" />
+          <Property Name="Pub_Language" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Total_Edition" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Insertion" Type="int" Nullable="false" />
+          <Property Name="Total_Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Agency_Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_NetCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstimateScheduled">
+          <Key>
+            <PropertyRef Name="EST_SchID" />
+          </Key>
+          <Property Name="EST_SchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_EditionID" Type="int" Nullable="false" />
+          <Property Name="EST_PUBID" Type="int" Nullable="false" />
+          <Property Name="EST_ID" Type="int" Nullable="false" />
+          <Property Name="Scheduled_Date" Type="datetime" Nullable="false" />
+          <Property Name="CaptionID" Type="int" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Height" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Weidth" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Size" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NoOfInsertion" Type="int" Nullable="false" />
+          <Property Name="Total_Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Agency_Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_NetCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BrandMaster_ClientMaster">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1" />
+          <End Role="BrandMaster" Type="Self.BrandMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="BrandMaster">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaptionMaster_BrandMaster">
+          <End Role="BrandMaster" Type="Self.BrandMaster" Multiplicity="1" />
+          <End Role="CaptionMaster" Type="Self.CaptionMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandMaster">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="CaptionMaster">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateEdition_EstimateHeader">
+          <End Role="EstimateHeader" Type="Self.EstimateHeader" Multiplicity="1" />
+          <End Role="EstimateEdition" Type="Self.EstimateEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateHeader">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="EstimateEdition">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateEdition_EstimatePublication">
+          <End Role="EstimatePublication" Type="Self.EstimatePublication" Multiplicity="1" />
+          <End Role="EstimateEdition" Type="Self.EstimateEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimatePublication">
+              <PropertyRef Name="EST_PUBID" />
+            </Principal>
+            <Dependent Role="EstimateEdition">
+              <PropertyRef Name="EST_PUBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateHeader_BrandMaster">
+          <End Role="BrandMaster" Type="Self.BrandMaster" Multiplicity="1" />
+          <End Role="EstimateHeader" Type="Self.EstimateHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandMaster">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="EstimateHeader">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateHeader_ClientMaster">
+          <End Role="ClientMaster" Type="Self.ClientMaster" Multiplicity="1" />
+          <End Role="EstimateHeader" Type="Self.EstimateHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="EstimateHeader">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimatePublication_EstimateHeader">
+          <End Role="EstimateHeader" Type="Self.EstimateHeader" Multiplicity="1" />
+          <End Role="EstimatePublication" Type="Self.EstimatePublication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateHeader">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="EstimatePublication">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_CaptionMaster">
+          <End Role="CaptionMaster" Type="Self.CaptionMaster" Multiplicity="1" />
+          <End Role="EstimateScheduled" Type="Self.EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaptionMaster">
+              <PropertyRef Name="CaptionID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="CaptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_EstimateEdition">
+          <End Role="EstimateEdition" Type="Self.EstimateEdition" Multiplicity="1" />
+          <End Role="EstimateScheduled" Type="Self.EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateEdition">
+              <PropertyRef Name="EST_EditionID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="EST_EditionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_EstimateHeader">
+          <End Role="EstimateHeader" Type="Self.EstimateHeader" Multiplicity="1" />
+          <End Role="EstimateScheduled" Type="Self.EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateHeader">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_EstimatePublication">
+          <End Role="EstimatePublication" Type="Self.EstimatePublication" Multiplicity="1" />
+          <End Role="EstimateScheduled" Type="Self.EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimatePublication">
+              <PropertyRef Name="EST_PUBID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="EST_PUBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EstimateDBModelStoreContainer">
+          <EntitySet Name="BrandMaster" EntityType="Self.BrandMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaptionMaster" EntityType="Self.CaptionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientMaster" EntityType="Self.ClientMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstimateEdition" EntityType="Self.EstimateEdition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstimateHeader" EntityType="Self.EstimateHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstimatePublication" EntityType="Self.EstimatePublication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstimateScheduled" EntityType="Self.EstimateScheduled" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BrandMaster_ClientMaster" Association="Self.FK_BrandMaster_ClientMaster">
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+            <End Role="BrandMaster" EntitySet="BrandMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaptionMaster_BrandMaster" Association="Self.FK_CaptionMaster_BrandMaster">
+            <End Role="BrandMaster" EntitySet="BrandMaster" />
+            <End Role="CaptionMaster" EntitySet="CaptionMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateEdition_EstimateHeader" Association="Self.FK_EstimateEdition_EstimateHeader">
+            <End Role="EstimateHeader" EntitySet="EstimateHeader" />
+            <End Role="EstimateEdition" EntitySet="EstimateEdition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateEdition_EstimatePublication" Association="Self.FK_EstimateEdition_EstimatePublication">
+            <End Role="EstimatePublication" EntitySet="EstimatePublication" />
+            <End Role="EstimateEdition" EntitySet="EstimateEdition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateHeader_BrandMaster" Association="Self.FK_EstimateHeader_BrandMaster">
+            <End Role="BrandMaster" EntitySet="BrandMaster" />
+            <End Role="EstimateHeader" EntitySet="EstimateHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateHeader_ClientMaster" Association="Self.FK_EstimateHeader_ClientMaster">
+            <End Role="ClientMaster" EntitySet="ClientMaster" />
+            <End Role="EstimateHeader" EntitySet="EstimateHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimatePublication_EstimateHeader" Association="Self.FK_EstimatePublication_EstimateHeader">
+            <End Role="EstimateHeader" EntitySet="EstimateHeader" />
+            <End Role="EstimatePublication" EntitySet="EstimatePublication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_CaptionMaster" Association="Self.FK_EstimateScheduled_CaptionMaster">
+            <End Role="CaptionMaster" EntitySet="CaptionMaster" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduled" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_EstimateEdition" Association="Self.FK_EstimateScheduled_EstimateEdition">
+            <End Role="EstimateEdition" EntitySet="EstimateEdition" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduled" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_EstimateHeader" Association="Self.FK_EstimateScheduled_EstimateHeader">
+            <End Role="EstimateHeader" EntitySet="EstimateHeader" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduled" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_EstimatePublication" Association="Self.FK_EstimateScheduled_EstimatePublication">
+            <End Role="EstimatePublication" EntitySet="EstimatePublication" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduled" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EstimateDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CaptionMaster">
+          <Key>
+            <PropertyRef Name="CaptionID" />
+          </Key>
+          <Property Name="CaptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Caption" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BrandMaster" Relationship="EstimateDBModel.FK_CaptionMaster_BrandMaster" FromRole="CaptionMaster" ToRole="BrandMaster" />
+          <NavigationProperty Name="EstimateScheduleds" Relationship="EstimateDBModel.FK_EstimateScheduled_CaptionMaster" FromRole="CaptionMaster" ToRole="EstimateScheduled" />
+        </EntityType>
+        <EntityType Name="ClientMaster">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BrandMasters" Relationship="EstimateDBModel.FK_BrandMaster_ClientMaster" FromRole="ClientMaster" ToRole="BrandMaster" />
+          <NavigationProperty Name="EstimateHeaders" Relationship="EstimateDBModel.FK_EstimateHeader_ClientMaster" FromRole="ClientMaster" ToRole="EstimateHeader" />
+        </EntityType>
+        <EntityType Name="EstimatePublication">
+          <Key>
+            <PropertyRef Name="EST_PUBID" />
+          </Key>
+          <Property Name="EST_PUBID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_Publication" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_ID" Type="Int32" Nullable="false" />
+          <Property Name="Pub_Language" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_Edition" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Insertion" Type="Int32" Nullable="false" />
+          <Property Name="Total_Cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Agency_Discount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_NetCost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="EstimateEditions" Relationship="EstimateDBModel.FK_EstimateEdition_EstimatePublication" FromRole="EstimatePublication" ToRole="EstimateEdition" />
+          <NavigationProperty Name="EstimateHeader" Relationship="EstimateDBModel.FK_EstimatePublication_EstimateHeader" FromRole="EstimatePublication" ToRole="EstimateHeader" />
+          <NavigationProperty Name="EstimateScheduleds" Relationship="EstimateDBModel.FK_EstimateScheduled_EstimatePublication" FromRole="EstimatePublication" ToRole="EstimateScheduled" />
+          </EntityType>
+        <EntityContainer Name="EstimateDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CaptionMasters" EntityType="Self.CaptionMaster" />
+          <EntitySet Name="ClientMasters" EntityType="Self.ClientMaster" />
+          <EntitySet Name="EstimatePublications" EntityType="Self.EstimatePublication" />
+          <EntitySet Name="BrandMasters" EntityType="EstimateDBModel.BrandMaster" />
+          <AssociationSet Name="FK_BrandMaster_ClientMaster" Association="EstimateDBModel.FK_BrandMaster_ClientMaster">
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+            <End Role="BrandMaster" EntitySet="BrandMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaptionMaster_BrandMaster" Association="EstimateDBModel.FK_CaptionMaster_BrandMaster">
+            <End Role="BrandMaster" EntitySet="BrandMasters" />
+            <End Role="CaptionMaster" EntitySet="CaptionMasters" />
+          </AssociationSet>
+          <EntitySet Name="EstimateEditions" EntityType="EstimateDBModel.EstimateEdition" />
+          <EntitySet Name="EstimateHeaders" EntityType="EstimateDBModel.EstimateHeader" />
+          <EntitySet Name="EstimateScheduleds" EntityType="EstimateDBModel.EstimateScheduled" />
+          <AssociationSet Name="FK_EstimateHeader_BrandMaster" Association="EstimateDBModel.FK_EstimateHeader_BrandMaster">
+            <End Role="BrandMaster" EntitySet="BrandMasters" />
+            <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_CaptionMaster" Association="EstimateDBModel.FK_EstimateScheduled_CaptionMaster">
+            <End Role="CaptionMaster" EntitySet="CaptionMasters" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduleds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateHeader_ClientMaster" Association="EstimateDBModel.FK_EstimateHeader_ClientMaster">
+            <End Role="ClientMaster" EntitySet="ClientMasters" />
+            <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateEdition_EstimateHeader" Association="EstimateDBModel.FK_EstimateEdition_EstimateHeader">
+            <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+            <End Role="EstimateEdition" EntitySet="EstimateEditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateEdition_EstimatePublication" Association="EstimateDBModel.FK_EstimateEdition_EstimatePublication">
+            <End Role="EstimatePublication" EntitySet="EstimatePublications" />
+            <End Role="EstimateEdition" EntitySet="EstimateEditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_EstimateEdition" Association="EstimateDBModel.FK_EstimateScheduled_EstimateEdition">
+            <End Role="EstimateEdition" EntitySet="EstimateEditions" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduleds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimatePublication_EstimateHeader" Association="EstimateDBModel.FK_EstimatePublication_EstimateHeader">
+            <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+            <End Role="EstimatePublication" EntitySet="EstimatePublications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_EstimateHeader" Association="EstimateDBModel.FK_EstimateScheduled_EstimateHeader">
+            <End Role="EstimateHeader" EntitySet="EstimateHeaders" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduleds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstimateScheduled_EstimatePublication" Association="EstimateDBModel.FK_EstimateScheduled_EstimatePublication">
+            <End Role="EstimatePublication" EntitySet="EstimatePublications" />
+            <End Role="EstimateScheduled" EntitySet="EstimateScheduleds" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BrandMaster">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand_Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientMaster" Relationship="EstimateDBModel.FK_BrandMaster_ClientMaster" FromRole="BrandMaster" ToRole="ClientMaster" />
+          <NavigationProperty Name="CaptionMasters" Relationship="EstimateDBModel.FK_CaptionMaster_BrandMaster" FromRole="BrandMaster" ToRole="CaptionMaster" />
+          <NavigationProperty Name="EstimateHeaders" Relationship="EstimateDBModel.FK_EstimateHeader_BrandMaster" FromRole="BrandMaster" ToRole="EstimateHeader" />
+        </EntityType>
+        <Association Name="FK_BrandMaster_ClientMaster">
+          <End Type="EstimateDBModel.ClientMaster" Role="ClientMaster" Multiplicity="1" />
+          <End Type="EstimateDBModel.BrandMaster" Role="BrandMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="BrandMaster">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaptionMaster_BrandMaster">
+          <End Type="EstimateDBModel.BrandMaster" Role="BrandMaster" Multiplicity="1" />
+          <End Type="EstimateDBModel.CaptionMaster" Role="CaptionMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandMaster">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="CaptionMaster">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EstimateEdition">
+          <Key>
+            <PropertyRef Name="EST_EditionID" />
+          </Key>
+          <Property Name="EST_EditionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_PUBID" Type="Int32" Nullable="false" />
+          <Property Name="EST_ID" Type="Int32" Nullable="false" />
+          <Property Name="Edition" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Weidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_Size" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NoOfInsertion" Type="Int32" Nullable="false" />
+          <Property Name="Total_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Agency_Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_NetCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="EstimateHeader" Relationship="EstimateDBModel.FK_EstimateEdition_EstimateHeader" FromRole="EstimateEdition" ToRole="EstimateHeader" />
+          <NavigationProperty Name="EstimatePublication" Relationship="EstimateDBModel.FK_EstimateEdition_EstimatePublication" FromRole="EstimateEdition" ToRole="EstimatePublication" />
+          <NavigationProperty Name="EstimateScheduleds" Relationship="EstimateDBModel.FK_EstimateScheduled_EstimateEdition" FromRole="EstimateEdition" ToRole="EstimateScheduled" />
+        </EntityType>
+        <EntityType Name="EstimateHeader">
+          <Key>
+            <PropertyRef Name="EST_ID" />
+          </Key>
+          <Property Name="EST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EST_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Campaign" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Agency" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PO_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="PeriodFrom" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PeriodTo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SAC_PER" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AAC_PER" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Gross_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Net_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BrandMaster" Relationship="EstimateDBModel.FK_EstimateHeader_BrandMaster" FromRole="EstimateHeader" ToRole="BrandMaster" />
+          <NavigationProperty Name="ClientMaster" Relationship="EstimateDBModel.FK_EstimateHeader_ClientMaster" FromRole="EstimateHeader" ToRole="ClientMaster" />
+          <NavigationProperty Name="EstimateEditions" Relationship="EstimateDBModel.FK_EstimateEdition_EstimateHeader" FromRole="EstimateHeader" ToRole="EstimateEdition" />
+          <NavigationProperty Name="EstimatePublications" Relationship="EstimateDBModel.FK_EstimatePublication_EstimateHeader" FromRole="EstimateHeader" ToRole="EstimatePublication" />
+          <NavigationProperty Name="EstimateScheduleds" Relationship="EstimateDBModel.FK_EstimateScheduled_EstimateHeader" FromRole="EstimateHeader" ToRole="EstimateScheduled" />
+        </EntityType>
+        <EntityType Name="EstimateScheduled">
+          <Key>
+            <PropertyRef Name="EST_SchID" />
+          </Key>
+          <Property Name="EST_SchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_EditionID" Type="Int32" Nullable="false" />
+          <Property Name="EST_PUBID" Type="Int32" Nullable="false" />
+          <Property Name="EST_ID" Type="Int32" Nullable="false" />
+          <Property Name="Scheduled_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CaptionID" Type="Int32" Nullable="false" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Weidth" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_Size" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NoOfInsertion" Type="Int32" Nullable="false" />
+          <Property Name="Total_Cost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Agency_Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_NetCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="CaptionMaster" Relationship="EstimateDBModel.FK_EstimateScheduled_CaptionMaster" FromRole="EstimateScheduled" ToRole="CaptionMaster" />
+          <NavigationProperty Name="EstimateEdition" Relationship="EstimateDBModel.FK_EstimateScheduled_EstimateEdition" FromRole="EstimateScheduled" ToRole="EstimateEdition" />
+          <NavigationProperty Name="EstimateHeader" Relationship="EstimateDBModel.FK_EstimateScheduled_EstimateHeader" FromRole="EstimateScheduled" ToRole="EstimateHeader" />
+          <NavigationProperty Name="EstimatePublication" Relationship="EstimateDBModel.FK_EstimateScheduled_EstimatePublication" FromRole="EstimateScheduled" ToRole="EstimatePublication" />
+        </EntityType>
+        <Association Name="FK_EstimateHeader_BrandMaster">
+          <End Type="EstimateDBModel.BrandMaster" Role="BrandMaster" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateHeader" Role="EstimateHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandMaster">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="EstimateHeader">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_CaptionMaster">
+          <End Type="EstimateDBModel.CaptionMaster" Role="CaptionMaster" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateScheduled" Role="EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CaptionMaster">
+              <PropertyRef Name="CaptionID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="CaptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateHeader_ClientMaster">
+          <End Type="EstimateDBModel.ClientMaster" Role="ClientMaster" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateHeader" Role="EstimateHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMaster">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="EstimateHeader">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateEdition_EstimateHeader">
+          <End Type="EstimateDBModel.EstimateHeader" Role="EstimateHeader" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateEdition" Role="EstimateEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateHeader">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="EstimateEdition">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateEdition_EstimatePublication">
+          <End Type="EstimateDBModel.EstimatePublication" Role="EstimatePublication" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateEdition" Role="EstimateEdition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimatePublication">
+              <PropertyRef Name="EST_PUBID" />
+            </Principal>
+            <Dependent Role="EstimateEdition">
+              <PropertyRef Name="EST_PUBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_EstimateEdition">
+          <End Type="EstimateDBModel.EstimateEdition" Role="EstimateEdition" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateScheduled" Role="EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateEdition">
+              <PropertyRef Name="EST_EditionID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="EST_EditionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimatePublication_EstimateHeader">
+          <End Type="EstimateDBModel.EstimateHeader" Role="EstimateHeader" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimatePublication" Role="EstimatePublication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateHeader">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="EstimatePublication">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_EstimateHeader">
+          <End Type="EstimateDBModel.EstimateHeader" Role="EstimateHeader" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateScheduled" Role="EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimateHeader">
+              <PropertyRef Name="EST_ID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="EST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstimateScheduled_EstimatePublication">
+          <End Type="EstimateDBModel.EstimatePublication" Role="EstimatePublication" Multiplicity="1" />
+          <End Type="EstimateDBModel.EstimateScheduled" Role="EstimateScheduled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstimatePublication">
+              <PropertyRef Name="EST_PUBID" />
+            </Principal>
+            <Dependent Role="EstimateScheduled">
+              <PropertyRef Name="EST_PUBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EstimateDBModelStoreContainer" CdmEntityContainer="EstimateDBEntities">
+          <EntitySetMapping Name="CaptionMasters">
+            <EntityTypeMapping TypeName="EstimateDBModel.CaptionMaster">
+              <MappingFragment StoreEntitySet="CaptionMaster">
+                <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientMasters">
+            <EntityTypeMapping TypeName="EstimateDBModel.ClientMaster">
+              <MappingFragment StoreEntitySet="ClientMaster">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstimatePublications">
+            <EntityTypeMapping TypeName="EstimateDBModel.EstimatePublication">
+              <MappingFragment StoreEntitySet="EstimatePublication">
+                <ScalarProperty Name="EST_PUBID" ColumnName="EST_PUBID" />
+                <ScalarProperty Name="EST_Publication" ColumnName="EST_Publication" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="Pub_Language" ColumnName="Pub_Language" />
+                <ScalarProperty Name="Total_Edition" ColumnName="Total_Edition" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Total_Insertion" ColumnName="Total_Insertion" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="Agency_Discount" ColumnName="Agency_Discount" />
+                <ScalarProperty Name="Total_NetCost" ColumnName="Total_NetCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandMasters">
+            <EntityTypeMapping TypeName="EstimateDBModel.BrandMaster">
+              <MappingFragment StoreEntitySet="BrandMaster">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Brand_Name" ColumnName="Brand_Name" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstimateEditions">
+            <EntityTypeMapping TypeName="EstimateDBModel.EstimateEdition">
+              <MappingFragment StoreEntitySet="EstimateEdition">
+                <ScalarProperty Name="Total_NetCost" ColumnName="Total_NetCost" />
+                <ScalarProperty Name="Agency_Discount" ColumnName="Agency_Discount" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="NoOfInsertion" ColumnName="NoOfInsertion" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Total_Size" ColumnName="Total_Size" />
+                <ScalarProperty Name="Weidth" ColumnName="Weidth" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="EST_PUBID" ColumnName="EST_PUBID" />
+                <ScalarProperty Name="EST_EditionID" ColumnName="EST_EditionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstimateHeaders">
+            <EntityTypeMapping TypeName="EstimateDBModel.EstimateHeader">
+              <MappingFragment StoreEntitySet="EstimateHeader">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Net_Cost" ColumnName="Net_Cost" />
+                <ScalarProperty Name="Gross_Cost" ColumnName="Gross_Cost" />
+                <ScalarProperty Name="AAC_PER" ColumnName="AAC_PER" />
+                <ScalarProperty Name="SAC_PER" ColumnName="SAC_PER" />
+                <ScalarProperty Name="PeriodTo" ColumnName="PeriodTo" />
+                <ScalarProperty Name="PeriodFrom" ColumnName="PeriodFrom" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="PO_Date" ColumnName="PO_Date" />
+                <ScalarProperty Name="PO_NO" ColumnName="PO_NO" />
+                <ScalarProperty Name="Agency" ColumnName="Agency" />
+                <ScalarProperty Name="Campaign" ColumnName="Campaign" />
+                <ScalarProperty Name="EST_Date" ColumnName="EST_Date" />
+                <ScalarProperty Name="EST_NO" ColumnName="EST_NO" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstimateScheduleds">
+            <EntityTypeMapping TypeName="EstimateDBModel.EstimateScheduled">
+              <MappingFragment StoreEntitySet="EstimateScheduled">
+                <ScalarProperty Name="Total_NetCost" ColumnName="Total_NetCost" />
+                <ScalarProperty Name="Agency_Discount" ColumnName="Agency_Discount" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="NoOfInsertion" ColumnName="NoOfInsertion" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Total_Size" ColumnName="Total_Size" />
+                <ScalarProperty Name="Weidth" ColumnName="Weidth" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="CaptionID" ColumnName="CaptionID" />
+                <ScalarProperty Name="Scheduled_Date" ColumnName="Scheduled_Date" />
+                <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+                <ScalarProperty Name="EST_PUBID" ColumnName="EST_PUBID" />
+                <ScalarProperty Name="EST_EditionID" ColumnName="EST_EditionID" />
+                <ScalarProperty Name="EST_SchID" ColumnName="EST_SchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
