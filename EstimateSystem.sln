@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstimateSystem", "EstimateS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstimateSystem.Tests", "EstimateSystem.Tests\EstimateSystem.Tests.csproj", "{1EC71748-4F63-4A29-B0DB-89F287D8611B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstimateSystem.BL", "EstimateSystem.BL\EstimateSystem.BL.csproj", "{6298D21E-9B8A-43F0-900A-BAD8D2D021B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1EC71748-4F63-4A29-B0DB-89F287D8611B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC71748-4F63-4A29-B0DB-89F287D8611B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC71748-4F63-4A29-B0DB-89F287D8611B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6298D21E-9B8A-43F0-900A-BAD8D2D021B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6298D21E-9B8A-43F0-900A-BAD8D2D021B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6298D21E-9B8A-43F0-900A-BAD8D2D021B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6298D21E-9B8A-43F0-900A-BAD8D2D021B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
