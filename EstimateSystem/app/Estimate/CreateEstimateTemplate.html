@@ -1,4 +1,4 @@
-﻿<form name="createEstimate" class="form-horizontal" role="form" ng-submit="submiteCreateForm()">
+﻿<form name="createEstimate" class="form-horizontal" role="form" ng-init="fetchDataIfEditing()">
 
     <fieldset>
         <legend>Create New Estimate</legend>
@@ -6,7 +6,7 @@
             <div class="form-group">
                 <label for="txtCampaign" class="col-sm-3 control-label">Campaign</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtCampaign" class="form-control" ng-model="estimate.campaign" />
+                    <input type="text" name="txtCampaign" class="form-control" ng-model="estimate.Campaign" />
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label for="txtAgency" class="col-sm-3 control-label">Agency</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtAgency" class="form-control" ng-model="estimate.agency" />
+                    <input type="text" name="txtAgency" class="form-control" ng-model="estimate.Agency" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,13 @@
             <div class="form-group">
                 <label for="txtPeriodFrom" class="col-sm-3 control-label">Period From</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtPeriodFrom" class="form-control" ng-model="estimate.periodFrom" />
+                    <p class="input-group">
+                        <input id="dt" type="text" name="txtPeriodFrom" class="form-control" ng-model="estimate.PeriodFrom"
+                               datepicker-options="periodFromOptions" is-open="isFromOpen" uib-datepicker-popup onkeydown="return false"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openFromDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -30,7 +36,13 @@
             <div class="form-group">
                 <label for="txtPeriodTo" class="col-sm-3 control-label">Period To</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtPeriodTo" class="form-control" ng-model="estimate.periodTo" />
+                    <p class="input-group">
+                        <input type="text" name="txtPeriodTo" class="form-control" ng-model="estimate.PeriodTo"
+                               datepicker-options="periodToOptions" is-open="isToOpen" uib-datepicker-popup date-disabled onkeydown="return false" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openToDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -38,7 +50,9 @@
             <div class="form-group">
                 <label for="txtClient" class="col-sm-3 control-label">Client</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtClient" class="form-control" ng-model="estimate.client" />
+                    <!--<input type="text" name="txtClient" class="form-control" ng-model="estimate.ClientID" />-->
+                    <select class="form-control" ng-model="estimate.ClientID" ng-options="client.clientID as client.client_Name for client in estimate.Clients">
+                    </select>
                 </div>
             </div>
         </div>
@@ -46,7 +60,9 @@
             <div class="form-group">
                 <label for="txtBrand" class="col-sm-3 control-label">Brand</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtBrand" class="form-control" ng-model="estimate.brand" />
+                    <!--<input type="text" name="txtBrand" class="form-control" ng-model="estimate.BrandID" />-->
+                    <select class="form-control" ng-model="estimate.BrandID" ng-options="brand.brandID as brand.brand_Name for brand in estimate.Brands">
+                    </select>
                 </div>
             </div>
         </div>
@@ -54,15 +70,21 @@
             <div class="form-group">
                 <label for="txtEstimateNo" class="col-sm-3 control-label">Estimate No</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtEstimateNo" class="form-control" ng-model="estimate.estNo" />
+                    <input type="text" name="txtEstimateNo" class="form-control" ng-model="estimate.EST_NO" />
                 </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="txtDateReadOnly" class="col-sm-3 control-label">Date</label>
+                <label for="txtDateReadOnly" class="col-sm-3 control-label">Current Date</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtDateReadOnly" class="form-control" ng-model="estimate.dateRO" />
+                    <p class="input-group">
+                        <input type="text" name="txtDateReadOnly" class="form-control" ng-model="estimate.EST_Date"
+                               datepicker-options="periodFromOptions" is-open="isDateROOpen" uib-datepicker-popup disabled/>
+                        <span class="input-group-btn">
+                            <button disabled  type="button" class="btn btn-default" ng-click="openDateRO()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -70,7 +92,7 @@
             <div class="form-group">
                 <label for="txtPONo" class="col-sm-3 control-label">PO No.</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtPONo" class="form-control" ng-model="estimate.poNo" />
+                    <input type="text" name="txtPONo" class="form-control" ng-model="estimate.PO_NO" />
                 </div>
             </div>
         </div>
@@ -78,7 +100,14 @@
             <div class="form-group">
                 <label for="txtDate" class="col-sm-3 control-label">Date</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtDate" class="form-control" ng-model="estimate.date" />
+                    <p class="input-group">
+                        <input type="text" name="txtDate" class="form-control" ng-model="estimate.PO_Date"
+                               datepicker-options="poDateOptions" is-open="isDateOpen" close-text="Close" uib-datepicker-popup onkeydown="return false" />
+
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -86,7 +115,7 @@
             <div class="form-group">
                 <label for="txtSACPer" class="col-sm-3 control-label">SAC Per</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtSACPer" class="form-control" ng-model="estimate.sac" />
+                    <input id="sac" type="number" name="txtSACPer" class="form-control" ng-model="estimate.SAC_PER" min="0" max="100"/>
                 </div>
             </div>
         </div>
@@ -94,10 +123,16 @@
             <div class="form-group">
                 <label for="txtAACPer" class="col-sm-3 control-label">AAC Per</label>
                 <div class="col-sm-9">
-                    <input type="text" name="txtAACPer" class="form-control" ng-model="estimate.aac" />
+                    <input id="aac" type="number" name="txtAACPer" class="form-control" ng-model="estimate.AAC_PER" min="0" max="100" />
                 </div>
             </div>
+        </div>
+
+
     </fieldset>
+    <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancelEstimate()" />
+
+    <input type="button" class="btn btn-success" value="Save" ng-click="saveEstimate()" />
 
 
 </form>

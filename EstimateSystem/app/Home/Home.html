@@ -1,8 +1,15 @@
 ﻿
-<input type="button" class="btn btn-primary" value="Create New" ng-click="addNewEstimateClick()" />
-<input type="button" class="btn btn-primary" value="Modify" ng-click="modifyEstimateClick()" />
-<input type="button" class="btn btn-primary" value="Delete" ng-click="deleteEstimateClick()" />
-<input type="button" class="btn btn-primary" value="Approve" ng-click="approveEstimateClick()" />
-<input type="button" class="btn btn-primary" value="Excel Report" ng-click="excelReportClick()" />
-<input type="button" class="btn btn-primary" value="PDF Report" ng-click="pdfreportClick()" />
 
+<span class="text-center"><h2>List of Estimates</h2></span>
+<div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ></div>
+<br />
+
+
+<input type="button" class="btn btn-primary" value="Create New" ng-click="addNewEstimateClick()" />
+<input type="button" ng-disabled="isMultipleRowsSelected" class="btn btn-primary" value="Modify" ng-click="modifyEstimateClick()" />
+<input type="button" ng-disabled="noRowsSelected" class="btn btn-primary" value="Delete" ng-click="deleteEstimateClick()" />
+<input type="button" class="btn btn-primary" value="Approve" ng-click="approveEstimateClick()" disabled/>
+<input type="button" class="btn btn-primary" value="Excel Report" ng-click="excelReportClick()" disabled />
+<input type="button" class="btn btn-primary" value="PDF Report" ng-click="pdfreportClick()"  disabled/>
+
+<input type="button" ng-disabled="isMultipleRowsSelected" class="btn btn-primary" value="Publications" ng-click="showPublications()" />

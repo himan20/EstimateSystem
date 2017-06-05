@@ -1,0 +1,110 @@
+﻿
+
+
+<form role="form" class="form-horizontal" ng-init="fetchDataIfEditing()">
+    <fieldset>
+        <legend>Create New Schedule</legend>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtScheduledDate" class="col-sm-3 control-label">Scheduled Date</label>
+                <div class="col-sm-9">
+                    <p class="input-group">
+                        <input type="text" name="txtScheduledDate" class="form-control" ng-model="schedule.Scheduled_Date"
+                               datepicker-options="dateOptions" is-open="isSchDateOpen" uib-datepicker-popup />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openSchDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtCaption" class="col-sm-3 control-label">Caption</label>
+                <div class="col-sm-9">
+                    <!--<input type="text" name="txtCaption" class="form-control" ng-model="schedule.CaptionID" />-->
+                    <select class="form-control" ng-model="schedule.CaptionID" ng-options="caption.captionID as caption.caption for caption in schedule.Captions">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtLanguage" class="col-sm-3 control-label">Language</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtLanguage" class="form-control" ng-model="schedule.Language" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtHeight" class="col-sm-3 control-label">Height</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtHeight" class="form-control" ng-model="schedule.Height" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtWidth" class="col-sm-3 control-label">Width</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtWidth" class="form-control" ng-model="schedule.Weidth" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtTotalSize" class="col-sm-3 control-label">Total Size</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtTotalSize" class="form-control" ng-model="schedule.Total_Size" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtRate" class="col-sm-3 control-label">Rate</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtRate" class="form-control" ng-model="schedule.Rate" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtNoOfInsertions" class="col-sm-3 control-label">No of Insertions</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtNoOfInsertions" class="form-control" ng-model="schedule.NoOfInsertion" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtTotalCost" class="col-sm-3 control-label">Total Cost</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtTotalCost" class="form-control" ng-model="schedule.Total_Cost" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtAgencyDiscount" class="col-sm-3 control-label">Agency Discount</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtAgencyDiscount" class="form-control" ng-model="schedule.Agency_Discount" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtNetCost" class="col-sm-3 control-label">Net Cost</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtNetCost" class="form-control" ng-model="schedule.Total_NetCost" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancelSchedule()" />
+
+    <input type="button" class="btn btn-success" value="Save" ng-click="saveSchedule()" />
+
+
+</form>

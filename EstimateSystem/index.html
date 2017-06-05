@@ -4,16 +4,34 @@
     <meta charset="utf-8" />
     <title>Start page</title>
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
     <script src="../Scripts/angular.min.js"></script>
     <script src="../Scripts/angular-route.min.js"></script>
+    <script src="../Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="../Scripts/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+
     <script src="app/EstimateApp.js"></script>
     <script src="app/Estimate/estController.js"></script>
     <script src="app/Estimate/estDirective.js"></script>
     <script src="app/Estimate/estService.js"></script>
     <script src="app/Home/homeController.js"></script>
+    <script src="app/Home/homeService.js"></script>
+    <script src="app/Publication/publicationController.js"></script>
+    <script src="app/Publication/publicationService.js"></script>
+    <script src="app/Edition/editionController.js"></script>
+    <script src="app/Edition/editionService.js"></script>
+    <script src="app/Schedule/scheduleController.js"></script>
+    <script src="app/Schedule/scheduleService.js"></script>
+    
+    <!--Need to put local files here instead-->
+    <script src="http://ui-grid.info/release/ui-grid.js"></script>
+    <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
 </head>
 <body ng-controller="estController" class="container">
-    <h1>Start Page</h1>
+    <toaster-container></toaster-container>
     <div ng-view>
     </div>
 </body>

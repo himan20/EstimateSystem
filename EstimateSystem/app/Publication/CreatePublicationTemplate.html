@@ -1,0 +1,77 @@
+﻿
+
+<form role="form" class="form-horizontal" ng-init="fetchDataIfEditing()">
+    <fieldset>
+        <legend>Create New Publication</legend>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtPublication" class="col-sm-3 control-label">Publication</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtPublication" class="form-control" ng-model="pub.EST_Publication" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtLanguage" class="col-sm-3 control-label">Language</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtLanguage" class="form-control" ng-model="pub.Pub_Language" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtRate" class="col-sm-3 control-label">Rate</label>
+                <div class="col-sm-9">
+                    <input type="number" name="txtRate" class="form-control" ng-model="pub.Rate" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtEditions" class="col-sm-3 control-label">Total Editions</label>
+                <div class="col-sm-9">
+                    <input type="number" name="txtEditions" class="form-control" ng-model="pub.Total_Edition" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtNoOfInsertions" class="col-sm-3 control-label">No of Insertions</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtNoOfInsertions" class="form-control" ng-model="pub.NoOfInsertion" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtTotalCost" class="col-sm-3 control-label">Total Cost</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtTotalCost" class="form-control" ng-model="pub.Total_Cost" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtAgencyDiscount" class="col-sm-3 control-label">Agency Discount</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtAgencyDiscount" class="form-control" ng-model="pub.Agency_Discount" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="txtNetCost" class="col-sm-3 control-label">Net Cost</label>
+                <div class="col-sm-9">
+                    <input type="text" name="txtNetCost" class="form-control" ng-model="pub.Total_NetCost" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancelPublication()" />
+
+    <input type="button" class="btn btn-success" value="Save" ng-click="savePublication()" />
+
+    <!--<input type="button" class="btn btn-primary" value="Add Edition" ng-click="addNewEdition()" />-->
+    
+</form>

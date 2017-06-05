@@ -1,0 +1,15 @@
+﻿
+<span class="text-center"><h2>List of Publications</h2></span>
+<div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection></div>
+<br />
+
+
+
+<input type="button" class="btn btn-primary" value="Create New" ng-click="addNewPublicationClick()" />
+<input type="button" ng-disabled="isMultipleRowsSelected" class="btn btn-primary" value="Modify" ng-click="modifyPublicationClick()" />
+<input type="button" ng-disabled="noRowsSelected" class="btn btn-primary" value="Delete" ng-click="deletePublicationClick()" />
+
+<!--<input type="button" class="btn btn-primary" value="Add Publication" ng-click="addNewPublication()" />-->
+
+
+<input type="button" ng-disabled="isMultipleRowsSelected" class="btn btn-primary" value="Editions" ng-click="showEditions()" />

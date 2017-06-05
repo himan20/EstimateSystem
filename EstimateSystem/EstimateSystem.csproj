@@ -43,10 +43,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -88,6 +97,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Edition\CreateEditionTemplate.html" />
+    <Content Include="app\Edition\Edition.html" />
+    <Content Include="app\Edition\editionController.js" />
+    <Content Include="app\Edition\editionService.js" />
     <Content Include="app\EstimateApp.js" />
     <Content Include="app\Estimate\CreateEstimateTemplate.html" />
     <Content Include="app\Estimate\estController.js" />
@@ -96,6 +109,14 @@
     <Content Include="app\Estimate\estTemplate.html" />
     <Content Include="app\Home\Home.html" />
     <Content Include="app\Home\homeController.js" />
+    <Content Include="app\Home\homeService.js" />
+    <Content Include="app\Publication\CreatePublicationTemplate.html" />
+    <Content Include="app\Publication\Publication.html" />
+    <Content Include="app\Publication\publicationController.js" />
+    <Content Include="app\Publication\publicationService.js" />
+    <Content Include="app\Schedule\CreateScheduleTemplate.html" />
+    <Content Include="app\Schedule\scheduleController.js" />
+    <Content Include="app\Schedule\scheduleService.js" />
     <Content Include="index.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -881,6 +902,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EditionController.cs" />
+    <Compile Include="Controllers\EstimateController.cs" />
+    <Compile Include="Controllers\PublicationController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="EnableCorsAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -913,8 +939,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Edition\" />
+    <Folder Include="Views\Estimate\" />
+    <Folder Include="Views\Publication\" />
+    <Folder Include="Views\Schedule\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EstimateSystem.BL\EstimateSystem.BL.csproj">
+      <Project>{6298D21E-9B8A-43F0-900A-BAD8D2D021B0}</Project>
+      <Name>EstimateSystem.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EstimateSystem.BO\EstimateSystem.BO.csproj">
+      <Project>{A61A8A88-8687-4A47-918A-E27B2F08AEDB}</Project>
+      <Name>EstimateSystem.BO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
