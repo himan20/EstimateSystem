@@ -13,9 +13,10 @@ estimateApp.controller('estController',function ($scope,$location,$timeout,toast
         if ($scope.estimate.EST_ID) {
             estService.getEstimateById($scope.estimate.EST_ID)
                 .then(function (result) {
+                    console.log(result);
                     $scope.estimate = {
-                        Campaign : result.data.campaign, 
-                        Agency : result.data.agency,
+                        Campaign: result.data.campaign,
+                        Agency: result.data.agency,
                         PeriodFrom: new Date(result.data.periodFrom),
                         PeriodTo: new Date(result.data.periodTo),
                         ClientID: result.data.clientID,
@@ -31,29 +32,54 @@ estimateApp.controller('estController',function ($scope,$location,$timeout,toast
                         Gross_Cost: result.data.gross_Cost,
                         EST_ID: result.data.esT_ID
                     };
-                    
+                    console.log($scope.estimate);
+                    console.log($scope.estimate.Clients);
                 }, function (error) {
                     toaster.pop('error', 'Sorry', 'Data could not be retrieved. Please try again later');
                 })
+                .then(function () {
+                    estService.getClients()
+                        .then(function (result) {
+                            //console.log(result);
+                            $scope.estimate.Clients = result.data;
+                            //$scope.estimate.ClientID = $scope.estimate.Clients[0].clientID;
+                        }, function (error) {
+
+                        });
+
+                    estService.getBrands()
+                        .then(function (result) {
+                            $scope.estimate.Brands = result.data;
+                            //$scope.estimate.BrandID = $scope.estimate.Brands[0].brandID;
+                        }, function (error) {
+
+                        });
+                }, function () {
+
+                });
+        }
+        else {
+            estService.getClients()
+                .then(function (result) {
+                    //console.log(result);
+                    $scope.estimate.Clients = result.data;
+                    $scope.estimate.ClientID = $scope.estimate.Clients[0].clientID;
+                }, function (error) {
+
+                });
+
+            estService.getBrands()
+                .then(function (result) {
+                    $scope.estimate.Brands = result.data;
+                    $scope.estimate.BrandID = $scope.estimate.Brands[0].brandID;
+                }, function (error) {
+
+                });
         }
 
-        estService.getClients()
-            .then(function (result) {
-                //console.log(result);
-                $scope.estimate.Clients = result.data;
-                $scope.estimate.ClientID = $scope.estimate.Clients[0].clientID;
-            }, function (error) {
-
-            });
-
-        estService.getBrands()
-            .then(function (result) {
-                $scope.estimate.Brands = result.data;
-                $scope.estimate.BrandID = $scope.estimate.Brands[0].brandID;
-            }, function (error) {
-
-            });
+        
     }
+
     
     $scope.cancelEstimate = function () {
         $window.history.back();

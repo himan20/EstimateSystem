@@ -46,25 +46,21 @@ estimateApp.controller('scheduleController', function ($scope, $location, $windo
                 }, function (error) {
                     toaster.pop('error', 'Sorry', 'Data could not be retrieved. Please try again later');
                 })
+                .then(function () {
+                    scheduleService.getCaptions()
+                        .then(function (result) {
+                            $scope.schedule.Captions = result.data;
+                            //$scope.schedule.CaptionID = $scope.schedule.Captions[0].captionID;
+                            console.log($scope.schedule.Captions);
+                        }, function (error) {
+
+                        });
+                }, function () {
+
+                });
         }
 
-        scheduleService.getCaptions()
-            .then(function (result) {
-                
-                //for (var i = 0; i < result.data.length; i++) {
-                //    var obj = {};
-                //    obj.caption_Name = result.data[i].caption;
-                //    obj.captionID = result.data[i].captionID;
-                //    $scope.schedule.Captions.push(obj);
-                //}
-
-
-                $scope.schedule.Captions = result.data;
-                $scope.schedule.CaptionID = $scope.schedule.Captions[0].captionID;
-                console.log($scope.schedule.Captions);
-            }, function (error) {
-
-            });
+        
     }
 
     $scope.isSchDateOpen = false;
