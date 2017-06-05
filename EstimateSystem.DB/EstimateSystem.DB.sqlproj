@@ -58,4 +58,10 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dummData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SetupDB.sql" />
+  </ItemGroup>
 </Project>
