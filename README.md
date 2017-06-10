@@ -7,7 +7,7 @@ This is an Estimate system that can be used by Companies for Calculating Estimat
 
 ## Screenshots
 * List of Estimates page
-![Alt text](/Screenshots/list_estimates_page.png?raw=true "List of Estimates")
+![Alt text](/EstimateSystem/Screenshots/list_estimates_page.png?raw=true "List of Estimates")
 
 * Create new Estimate page
-![Alt text](/Screenshots/create_estimate_page.png?raw=true "List of Estimates")
+![Alt text](/EstimateSystem/Screenshots/create_estimate_page.png?raw=true "List of Estimates")
